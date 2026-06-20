@@ -1,0 +1,77 @@
+aid: mage-ai
+name: Mage
+review:
+  question: Does Mage expose a documented public WebSocket or streaming API?
+  answer: false
+  date: '2026-06-20'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was created. Mage's documented HTTP API
+    (/api/* resources on the self-hosted app, default port 6789) is
+    request/response REST only. No documented public WebSocket (ws://,
+    wss://) or HTTP Server-Sent Events (SSE) API surface exists for the
+    catalogued pipeline trigger, pipeline, block, pipeline-run, or
+    pipeline-schedule resources. The Mage web UI uses an internal
+    WebSocket for the notebook/editor, but it is not a documented public
+    API and is out of scope.
+findings:
+  summary: |
+    Mage does not publish a documented public streaming API. Pipelines are
+    triggered and managed via REST over HTTP against the self-hosted Mage
+    app at http://<host>:6789/api. Triggering a pipeline run is a POST to
+    /api/pipeline_schedules/{id}/pipeline_runs/{token} for an API trigger;
+    pipelines, blocks, pipeline runs, and pipeline schedules follow standard
+    REST CRUD conventions. Authentication uses an api_key (query parameter
+    or request body) plus an OAuth token via the OAUTH-TOKEN header or the
+    oauth_token cookie. All responses return HTTP 200 with errors nested in
+    an error key. No documented public WebSocket or SSE transport exists.
+  transports:
+    - protocol: REST
+      scheme: http
+      baseURL: http://localhost:6789/api
+      documented: true
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: The Mage editor UI uses an internal WebSocket, but no public WebSocket API is documented.
+    - protocol: SSE
+      scheme: http
+      documented: false
+      note: No documented Server-Sent Events API surface for the catalogued resources.
+  endpointsConfirmedRest:
+    - POST   http://localhost:6789/api/pipeline_schedules/{id}/pipeline_runs/{token}
+    - GET    http://localhost:6789/api/pipeline_runs
+    - GET    http://localhost:6789/api/pipeline_runs/{id}
+    - GET    http://localhost:6789/api/pipelines
+    - POST   http://localhost:6789/api/pipelines
+    - GET    http://localhost:6789/api/pipelines/{uuid}
+    - PUT    http://localhost:6789/api/pipelines/{uuid}
+    - DELETE http://localhost:6789/api/pipelines/{uuid}
+    - POST   http://localhost:6789/api/pipelines/{uuid}/blocks
+    - GET    http://localhost:6789/api/pipelines/{uuid}/blocks/{block_uuid}
+    - PUT    http://localhost:6789/api/pipelines/{uuid}/blocks/{block_uuid}
+    - DELETE http://localhost:6789/api/pipelines/{uuid}/blocks/{block_uuid}
+    - GET    http://localhost:6789/api/pipeline_schedules
+    - POST   http://localhost:6789/api/pipelines/{uuid}/pipeline_schedules
+    - PUT    http://localhost:6789/api/pipeline_schedules/{id}
+sources:
+  - url: https://docs.mage.ai/orchestration/triggers/trigger-pipeline-api
+    type: Documentation
+    note: API trigger - POST /api/pipeline_schedules/{id}/pipeline_runs/{token} with optional runtime variables; no WebSocket.
+  - url: https://docs.mage.ai/extensibility/api-reference/overview
+    type: APIReference
+    note: REST CRUD conventions over /api/* with api_key + OAUTH-TOKEN/oauth_token auth; responses return 200 with errors nested.
+  - url: https://docs.mage.ai/extensibility/api-reference/pipelines/create-pipeline
+    type: APIReference
+    note: POST /api/pipelines example with api_key and oauth_token; REST only.
+  - url: https://github.com/mage-ai/mage-ai
+    type: GitHub
+    note: Open-source self-hosted app; default port 6789; no documented public streaming API.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No public WebSocket or SSE protocol surface is documented for Mage's
+    catalogued REST resources. The internal editor WebSocket is not a
+    documented public API. No AsyncAPI document was authored.

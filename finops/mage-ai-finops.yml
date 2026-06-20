@@ -1,0 +1,111 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Mage
+providerId: mage-ai
+created: '2026-06-20'
+modified: '2026-06-20'
+reconciled: false
+tags:
+- Data Pipelines
+- Orchestration
+- ETL
+- Open Source
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Mage spend. The open-source self-hosted edition has no
+  software license cost; spend is the underlying compute, storage, and
+  networking of the host running the Mage server and its executor. Mage Pro
+  spend combines a flat monthly subscription (Starter / Team / Plus) with
+  usage-based Kubernetes compute hours, AI token consumption, and block-run
+  allowances, plus quote-based Enterprise deployment and annual support
+  plans.
+notes: >-
+  Self-serve Mage Pro figures are as published on the Mage pricing page and
+  may change; Enterprise and deployment-model pricing is quote-based and not
+  reconciled here. Verify during reconciliation.
+sources:
+- https://www.mage.ai/pricing
+- https://docs.mage.ai/extensibility/api-reference/overview
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Mage
+serviceCategory: Analytics
+billingModel:
+  pricingCategory: Hybrid
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+  - Usage
+  - Purchase
+  - Adjustment
+focusColumns:
+  ServiceName: Mage Pro
+  ServiceCategory: Analytics
+  ProviderName: Mage
+  PublisherName: Mage
+  InvoiceIssuerName: Mage
+  BillingCurrency: USD
+  ChargeCategory: Usage
+  PricingCategory: Hybrid
+meters:
+- name: subscription
+  description: Flat monthly Mage Pro subscription per tier (Starter / Team / Plus).
+  unit: months
+  aggregation: sum
+  dimensions:
+  - account
+  - tier
+- name: compute_hours
+  description: Kubernetes-executor compute hours billed per hour (e.g. $0.29/hr on Starter).
+  unit: hours
+  aggregation: sum
+  dimensions:
+  - account
+  - cluster
+- name: block_runs
+  description: Block runs consumed against the tier's monthly block-run allowance.
+  unit: runs
+  aggregation: sum
+  dimensions:
+  - account
+  - pipeline
+- name: ai_tokens
+  description: AI tokens consumed against the tier's monthly AI token allowance.
+  unit: tokens
+  aggregation: sum
+  dimensions:
+  - account
+  - tier
+- name: self_hosted_infrastructure
+  description: Underlying host compute / storage / networking for open-source self-hosted Mage.
+  unit: hours
+  aggregation: sum
+  dimensions:
+  - deployment
+- name: support_plan
+  description: Annual Mage Pro support plan (Essentials / Extended / Complete).
+  unit: years
+  aggregation: sum
+  dimensions:
+  - account
+  - plan
+principles:
+- name: Visibility
+  description: Track Mage Pro subscription, compute-hour, block-run, and AI-token usage; for self-hosted, attribute host infrastructure spend to Mage.
+- name: Allocation
+  description: Tag pipelines/workspaces per team and map block-run and compute consumption to cost centers.
+- name: Optimization
+  description: Prefer the local_python executor (no compute charge) where 8GB RAM suffices; reserve the Kubernetes executor for large/horizontally-scaled jobs; right-size self-hosted infrastructure.
+- name: Accountability
+  description: Assign owners per workspace/cluster; review block-run and compute spend monthly against tier allowances.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

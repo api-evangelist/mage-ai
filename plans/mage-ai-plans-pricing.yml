@@ -1,0 +1,232 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Mage
+providerId: mage-ai
+created: '2026-06-20'
+modified: '2026-06-20'
+reconciled: false
+tags:
+- Data Pipelines
+- Orchestration
+- ETL
+- Open Source
+- Plans
+description: >-
+  Mage is dual-distributed. The open-source Mage edition is free to
+  self-host (Apache 2.0) and exposes the same /api REST surface with no
+  per-call pricing. Mage Pro is the managed cloud edition with self-serve
+  subscription tiers (Starter, Team, Plus) plus usage-based compute, AI
+  tokens, and block-run allowances, and sales-led Enterprise tiers
+  (Managed / Hybrid / Private Cloud, On-Premises) with separately priced
+  support plans. Pricing not published as fixed per-unit rates is marked
+  contact sales and is not reconciled in this artifact.
+notes: >-
+  Self-serve tier figures are as published on the Mage pricing page and may
+  change; compute is billed only when using the Kubernetes executor.
+  Enterprise and deployment-model pricing is quote-based. Verify on the
+  pricing page during reconciliation.
+sources:
+- https://www.mage.ai/pricing
+- https://www.mage.ai/pricing/enterprise
+- https://github.com/mage-ai/mage-ai
+plans:
+- id: mage-open-source
+  name: Open Source
+  type: free
+  description: >-
+    Self-hosted, Apache-2.0 open-source Mage. Free to run; full /api REST
+    surface available with no per-call charges. You pay only for your own
+    infrastructure.
+  entries:
+  - label: Open Source Self-Hosted
+    name: open_source
+    type: free
+    metric: usage
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: free (self-hosted infrastructure costs only)
+    userMultiplied: false
+  elements:
+  - name: Pipelines API
+  - name: Blocks API
+  - name: Pipeline Triggers & Runs API
+  - name: Pipeline Schedules API
+- id: mage-pro-starter
+  name: Mage Pro Starter
+  type: subscription
+  description: >-
+    Entry managed cloud tier with usage-based compute and a monthly AI
+    token allowance.
+  entries:
+  - label: Starter Subscription
+    name: starter_base
+    type: flat
+    metric: subscription
+    limit: 1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $100 per month
+    userMultiplied: false
+  - label: Compute (Kubernetes executor)
+    name: starter_compute
+    type: usage
+    metric: compute_hours
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $0.29 per compute hour
+    userMultiplied: false
+  - label: AI Tokens
+    name: starter_ai_tokens
+    type: quota
+    metric: tokens
+    limit: 50000
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included (50K AI tokens / month)
+    userMultiplied: false
+  elements:
+  - name: Managed Cloud
+  - name: 1+ cluster
+- id: mage-pro-team
+  name: Mage Pro Team
+  type: subscription
+  description: >-
+    Managed cloud tier with a monthly block-run allowance, multiple
+    workspaces, and a larger AI token allowance.
+  entries:
+  - label: Team Subscription
+    name: team_base
+    type: flat
+    metric: subscription
+    limit: 1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $500 per month
+    userMultiplied: false
+  - label: Block Runs
+    name: team_block_runs
+    type: quota
+    metric: block_runs
+    limit: 15000
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included (up to 15,000 block runs / month)
+    userMultiplied: false
+  - label: AI Tokens
+    name: team_ai_tokens
+    type: quota
+    metric: tokens
+    limit: 250000
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included (250K AI tokens / month)
+    userMultiplied: false
+  elements:
+  - name: 2+ workspaces
+- id: mage-pro-plus
+  name: Mage Pro Plus
+  type: subscription
+  description: >-
+    Higher managed cloud tier with larger block-run and AI token
+    allowances, multiple clusters, and more workspaces.
+  entries:
+  - label: Plus Subscription
+    name: plus_base
+    type: flat
+    metric: subscription
+    limit: 1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $2,000 per month
+    userMultiplied: false
+  - label: Block Runs
+    name: plus_block_runs
+    type: quota
+    metric: block_runs
+    limit: 50000
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included (up to 50,000 block runs / month)
+    userMultiplied: false
+  - label: AI Tokens
+    name: plus_ai_tokens
+    type: quota
+    metric: tokens
+    limit: 2000000
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included (2M AI tokens / month)
+    userMultiplied: false
+  elements:
+  - name: 2+ clusters
+  - name: 6+ workspaces
+- id: mage-pro-enterprise
+  name: Mage Pro Enterprise
+  type: enterprise
+  description: >-
+    Sales-led tier covering Managed Cloud, Hybrid Cloud, Private Cloud, and
+    On-Premises deployment models with negotiated terms and separately
+    priced support plans (Essentials $20k/yr, Extended $100k/yr, Complete
+    $250k/yr).
+  entries:
+  - label: Enterprise Deployment
+    name: enterprise
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  - label: Support - Essentials
+    name: support_essentials
+    type: flat
+    metric: contract
+    limit: 1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: $20,000 per year
+    userMultiplied: false
+  - label: Support - Extended
+    name: support_extended
+    type: flat
+    metric: contract
+    limit: 1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: $100,000 per year
+    userMultiplied: false
+  - label: Support - Complete
+    name: support_complete
+    type: flat
+    metric: contract
+    limit: 1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: $250,000 per year
+    userMultiplied: false
+  elements:
+  - name: Managed Cloud
+  - name: Hybrid Cloud
+  - name: Private Cloud
+  - name: On-Premises
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,633 @@
+{
+  "item": [
+    {
+      "name": "Pipeline Triggers & Runs",
+      "description": {
+        "content": "Trigger pipeline runs via API triggers and read pipeline run status.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "name": "Trigger a pipeline run via an API trigger",
+          "request": {
+            "name": "Trigger a pipeline run via an API trigger",
+            "description": {
+              "content": "Creates a pipeline run for the pipeline schedule (API trigger) identified by schedule_id and token. Runtime variables are optional.",
+              "type": "text/plain"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/pipeline_schedules/:schedule_id/pipeline_runs/:token",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pipeline_schedules",
+                ":schedule_id",
+                "pipeline_runs",
+                ":token"
+              ],
+              "variable": [
+                {
+                  "key": "schedule_id",
+                  "value": "3",
+                  "description": "The unique ID of the pipeline schedule (API trigger)."
+                },
+                {
+                  "key": "token",
+                  "value": "abc123",
+                  "description": "The unique token associated with the API trigger."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pipeline_run\": {\n    \"variables\": {\n      \"env\": \"staging\",\n      \"schema\": \"public\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List pipeline runs",
+          "request": {
+            "name": "List pipeline runs",
+            "description": {},
+            "url": {
+              "raw": "{{baseUrl}}/api/pipeline_runs?api_key={{apiKey}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pipeline_runs"
+              ],
+              "query": [
+                {
+                  "key": "api_key",
+                  "value": "{{apiKey}}"
+                }
+              ]
+            },
+            "header": [],
+            "method": "GET"
+          },
+          "response": []
+        },
+        {
+          "name": "Read a pipeline run",
+          "request": {
+            "name": "Read a pipeline run",
+            "description": {},
+            "url": {
+              "raw": "{{baseUrl}}/api/pipeline_runs/:id?api_key={{apiKey}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pipeline_runs",
+                ":id"
+              ],
+              "query": [
+                {
+                  "key": "api_key",
+                  "value": "{{apiKey}}"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            },
+            "header": [],
+            "method": "GET"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Pipelines",
+      "description": {
+        "content": "List, create, read, update, and delete pipelines.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "name": "List pipelines",
+          "request": {
+            "name": "List pipelines",
+            "description": {},
+            "url": {
+              "raw": "{{baseUrl}}/api/pipelines?api_key={{apiKey}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pipelines"
+              ],
+              "query": [
+                {
+                  "key": "api_key",
+                  "value": "{{apiKey}}"
+                }
+              ]
+            },
+            "header": [],
+            "method": "GET"
+          },
+          "response": []
+        },
+        {
+          "name": "Create a pipeline",
+          "request": {
+            "name": "Create a pipeline",
+            "description": {},
+            "url": {
+              "raw": "{{baseUrl}}/api/pipelines",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pipelines"
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"api_key\": \"{{apiKey}}\",\n  \"pipeline\": {\n    \"name\": \"arwen-starlight\",\n    \"type\": \"python\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Read a pipeline",
+          "request": {
+            "name": "Read a pipeline",
+            "description": {},
+            "url": {
+              "raw": "{{baseUrl}}/api/pipelines/:uuid?api_key={{apiKey}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pipelines",
+                ":uuid"
+              ],
+              "query": [
+                {
+                  "key": "api_key",
+                  "value": "{{apiKey}}"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "uuid",
+                  "value": "arwen_starlight"
+                }
+              ]
+            },
+            "header": [],
+            "method": "GET"
+          },
+          "response": []
+        },
+        {
+          "name": "Update a pipeline",
+          "request": {
+            "name": "Update a pipeline",
+            "description": {},
+            "url": {
+              "raw": "{{baseUrl}}/api/pipelines/:uuid",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pipelines",
+                ":uuid"
+              ],
+              "variable": [
+                {
+                  "key": "uuid",
+                  "value": "arwen_starlight"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"api_key\": \"{{apiKey}}\",\n  \"pipeline\": {\n    \"name\": \"arwen-starlight\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete a pipeline",
+          "request": {
+            "name": "Delete a pipeline",
+            "description": {},
+            "url": {
+              "raw": "{{baseUrl}}/api/pipelines/:uuid?api_key={{apiKey}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pipelines",
+                ":uuid"
+              ],
+              "query": [
+                {
+                  "key": "api_key",
+                  "value": "{{apiKey}}"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "uuid",
+                  "value": "arwen_starlight"
+                }
+              ]
+            },
+            "header": [],
+            "method": "DELETE"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Blocks",
+      "description": {
+        "content": "Create, read, update, and delete blocks within a pipeline.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "name": "Create a block in a pipeline",
+          "request": {
+            "name": "Create a block in a pipeline",
+            "description": {},
+            "url": {
+              "raw": "{{baseUrl}}/api/pipelines/:uuid/blocks",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pipelines",
+                ":uuid",
+                "blocks"
+              ],
+              "variable": [
+                {
+                  "key": "uuid",
+                  "value": "arwen_starlight"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"api_key\": \"{{apiKey}}\",\n  \"block\": {\n    \"name\": \"load_data\",\n    \"type\": \"data_loader\",\n    \"language\": \"python\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Read a block in a pipeline",
+          "request": {
+            "name": "Read a block in a pipeline",
+            "description": {},
+            "url": {
+              "raw": "{{baseUrl}}/api/pipelines/:uuid/blocks/:block_uuid?api_key={{apiKey}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pipelines",
+                ":uuid",
+                "blocks",
+                ":block_uuid"
+              ],
+              "query": [
+                {
+                  "key": "api_key",
+                  "value": "{{apiKey}}"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "uuid",
+                  "value": "arwen_starlight"
+                },
+                {
+                  "key": "block_uuid",
+                  "value": "load_data"
+                }
+              ]
+            },
+            "header": [],
+            "method": "GET"
+          },
+          "response": []
+        },
+        {
+          "name": "Update a block in a pipeline",
+          "request": {
+            "name": "Update a block in a pipeline",
+            "description": {},
+            "url": {
+              "raw": "{{baseUrl}}/api/pipelines/:uuid/blocks/:block_uuid",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pipelines",
+                ":uuid",
+                "blocks",
+                ":block_uuid"
+              ],
+              "variable": [
+                {
+                  "key": "uuid",
+                  "value": "arwen_starlight"
+                },
+                {
+                  "key": "block_uuid",
+                  "value": "load_data"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"api_key\": \"{{apiKey}}\",\n  \"block\": {\n    \"content\": \"# updated block code\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete a block from a pipeline",
+          "request": {
+            "name": "Delete a block from a pipeline",
+            "description": {},
+            "url": {
+              "raw": "{{baseUrl}}/api/pipelines/:uuid/blocks/:block_uuid?api_key={{apiKey}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pipelines",
+                ":uuid",
+                "blocks",
+                ":block_uuid"
+              ],
+              "query": [
+                {
+                  "key": "api_key",
+                  "value": "{{apiKey}}"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "uuid",
+                  "value": "arwen_starlight"
+                },
+                {
+                  "key": "block_uuid",
+                  "value": "load_data"
+                }
+              ]
+            },
+            "header": [],
+            "method": "DELETE"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Pipeline Schedules",
+      "description": {
+        "content": "List, create, and update pipeline schedules (triggers).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "name": "List pipeline schedules",
+          "request": {
+            "name": "List pipeline schedules",
+            "description": {},
+            "url": {
+              "raw": "{{baseUrl}}/api/pipeline_schedules?api_key={{apiKey}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pipeline_schedules"
+              ],
+              "query": [
+                {
+                  "key": "api_key",
+                  "value": "{{apiKey}}"
+                }
+              ]
+            },
+            "header": [],
+            "method": "GET"
+          },
+          "response": []
+        },
+        {
+          "name": "Create a pipeline schedule for a pipeline",
+          "request": {
+            "name": "Create a pipeline schedule for a pipeline",
+            "description": {},
+            "url": {
+              "raw": "{{baseUrl}}/api/pipelines/:uuid/pipeline_schedules",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pipelines",
+                ":uuid",
+                "pipeline_schedules"
+              ],
+              "variable": [
+                {
+                  "key": "uuid",
+                  "value": "arwen_starlight"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"api_key\": \"{{apiKey}}\",\n  \"pipeline_schedule\": {\n    \"name\": \"daily run\",\n    \"schedule_type\": \"time\",\n    \"schedule_interval\": \"@daily\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update a pipeline schedule",
+          "request": {
+            "name": "Update a pipeline schedule",
+            "description": {},
+            "url": {
+              "raw": "{{baseUrl}}/api/pipeline_schedules/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pipeline_schedules",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "3"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"api_key\": \"{{apiKey}}\",\n  \"pipeline_schedule\": {\n    \"status\": \"active\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:6789",
+      "key": "baseUrl"
+    },
+    {
+      "type": "string",
+      "value": "",
+      "key": "apiKey"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b3c0f1e2-7a4d-4e8b-9c21-mage00000001",
+    "name": "Mage API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API exposed by the self-hosted Mage data pipeline app (default port 6789). Covers triggering pipeline runs, and managing pipelines, blocks, pipeline runs, and pipeline schedules. Authenticate with an api_key (query parameter or request body) plus an OAuth token via the OAUTH-TOKEN header or oauth_token cookie.",
+      "type": "text/plain"
+    }
+  }
+}

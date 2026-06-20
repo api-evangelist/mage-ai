@@ -1,0 +1,355 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mage API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{apiKey}}",
+      "in": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Pipeline Triggers & Runs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Trigger a pipeline run via an API trigger",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:6789/api/pipeline_schedules/:schedule_id/pipeline_runs/:token",
+            "params": [
+              {
+                "name": "schedule_id",
+                "value": "3",
+                "type": "path",
+                "description": "The unique ID of the pipeline schedule (API trigger)."
+              },
+              {
+                "name": "token",
+                "value": "abc123",
+                "type": "path",
+                "description": "The unique token associated with the API trigger."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{\n  \"pipeline_run\": {\n    \"variables\": {\n      \"env\": \"staging\",\n      \"schema\": \"public\"\n    }\n  }\n}"
+            }
+          },
+          "docs": "Creates a pipeline run for the API trigger identified by schedule_id and token. Runtime variables are optional."
+        },
+        {
+          "info": {
+            "name": "List pipeline runs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:6789/api/pipeline_runs"
+          },
+          "docs": "Lists pipeline runs."
+        },
+        {
+          "info": {
+            "name": "Read a pipeline run",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:6789/api/pipeline_runs/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path",
+                "description": "The pipeline run ID."
+              }
+            ]
+          },
+          "docs": "Reads a single pipeline run."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Pipelines",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List pipelines",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:6789/api/pipelines"
+          },
+          "docs": "Lists pipelines."
+        },
+        {
+          "info": {
+            "name": "Create a pipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:6789/api/pipelines",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"pipeline\": {\n    \"name\": \"arwen-starlight\",\n    \"type\": \"python\"\n  }\n}"
+            }
+          },
+          "docs": "Creates a pipeline."
+        },
+        {
+          "info": {
+            "name": "Read a pipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:6789/api/pipelines/:uuid",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "arwen_starlight",
+                "type": "path",
+                "description": "The pipeline UUID."
+              }
+            ]
+          },
+          "docs": "Reads a single pipeline."
+        },
+        {
+          "info": {
+            "name": "Update a pipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:6789/api/pipelines/:uuid",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "arwen_starlight",
+                "type": "path",
+                "description": "The pipeline UUID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{\n  \"pipeline\": {\n    \"name\": \"arwen-starlight\"\n  }\n}"
+            }
+          },
+          "docs": "Updates a pipeline."
+        },
+        {
+          "info": {
+            "name": "Delete a pipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:6789/api/pipelines/:uuid",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "arwen_starlight",
+                "type": "path",
+                "description": "The pipeline UUID."
+              }
+            ]
+          },
+          "docs": "Deletes a pipeline."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Blocks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a block in a pipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:6789/api/pipelines/:uuid/blocks",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "arwen_starlight",
+                "type": "path",
+                "description": "The pipeline UUID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{\n  \"block\": {\n    \"name\": \"load_data\",\n    \"type\": \"data_loader\",\n    \"language\": \"python\"\n  }\n}"
+            }
+          },
+          "docs": "Creates a block in a pipeline."
+        },
+        {
+          "info": {
+            "name": "Read a block in a pipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:6789/api/pipelines/:uuid/blocks/:block_uuid",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "arwen_starlight",
+                "type": "path",
+                "description": "The pipeline UUID."
+              },
+              {
+                "name": "block_uuid",
+                "value": "load_data",
+                "type": "path",
+                "description": "The block UUID."
+              }
+            ]
+          },
+          "docs": "Reads a single block in a pipeline."
+        },
+        {
+          "info": {
+            "name": "Update a block in a pipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:6789/api/pipelines/:uuid/blocks/:block_uuid",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "arwen_starlight",
+                "type": "path",
+                "description": "The pipeline UUID."
+              },
+              {
+                "name": "block_uuid",
+                "value": "load_data",
+                "type": "path",
+                "description": "The block UUID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{\n  \"block\": {\n    \"content\": \"# updated block code\"\n  }\n}"
+            }
+          },
+          "docs": "Updates a block in a pipeline."
+        },
+        {
+          "info": {
+            "name": "Delete a block from a pipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:6789/api/pipelines/:uuid/blocks/:block_uuid",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "arwen_starlight",
+                "type": "path",
+                "description": "The pipeline UUID."
+              },
+              {
+                "name": "block_uuid",
+                "value": "load_data",
+                "type": "path",
+                "description": "The block UUID."
+              }
+            ]
+          },
+          "docs": "Deletes a block from a pipeline."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Pipeline Schedules",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List pipeline schedules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:6789/api/pipeline_schedules"
+          },
+          "docs": "Lists pipeline schedules (triggers)."
+        },
+        {
+          "info": {
+            "name": "Create a pipeline schedule for a pipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:6789/api/pipelines/:uuid/pipeline_schedules",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "arwen_starlight",
+                "type": "path",
+                "description": "The pipeline UUID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{\n  \"pipeline_schedule\": {\n    \"name\": \"daily run\",\n    \"schedule_type\": \"time\",\n    \"schedule_interval\": \"@daily\"\n  }\n}"
+            }
+          },
+          "docs": "Creates a pipeline schedule (trigger) for a pipeline."
+        },
+        {
+          "info": {
+            "name": "Update a pipeline schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:6789/api/pipeline_schedules/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "3",
+                "type": "path",
+                "description": "The pipeline schedule ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{\n  \"pipeline_schedule\": {\n    \"status\": \"active\"\n  }\n}"
+            }
+          },
+          "docs": "Updates a pipeline schedule."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

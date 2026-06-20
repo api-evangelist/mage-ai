@@ -1,0 +1,66 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Mage
+providerId: mage-ai
+created: '2026-06-20'
+modified: '2026-06-20'
+reconciled: false
+tags:
+- Data Pipelines
+- Orchestration
+- ETL
+- Open Source
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  The open-source, self-hosted Mage app does not document fixed public
+  HTTP rate limits on its /api surface; effective throughput is governed by
+  the resources of the host running the Mage server and its executor
+  (local_python or Kubernetes). On Mage Pro, practical limits are expressed
+  as plan allowances - monthly block runs (e.g. 15,000 on Team, 50,000 on
+  Plus), AI token allowances, and compute hours - rather than per-minute
+  request quotas. Specific per-endpoint throttling values are not reconciled
+  in this artifact.
+notes: >-
+  Verify any Mage Pro concurrency, block-run, and AI-token limits on the
+  pricing page and account console during reconciliation. Self-hosted limits
+  depend entirely on deployment sizing and executor configuration.
+sources:
+- https://docs.mage.ai/extensibility/api-reference/overview
+- https://www.mage.ai/pricing
+- https://github.com/mage-ai/mage-ai
+responseCodes:
+  throttled: 429
+limits:
+- name: Self-Hosted HTTP Requests
+  scope: deployment
+  metric: requests
+  limit: governed by host resources
+  notes: Open-source self-hosted Mage publishes no fixed per-minute API rate limit.
+- name: Block Runs (Mage Pro)
+  scope: account
+  metric: block_runs
+  limit: see plan allowance
+  notes: Monthly block-run allowances per Mage Pro tier (e.g. 15,000 Team, 50,000 Plus).
+- name: AI Tokens (Mage Pro)
+  scope: account
+  metric: tokens
+  limit: see plan allowance
+  notes: Monthly AI token allowance per Mage Pro tier.
+- name: Compute Hours (Mage Pro)
+  scope: account
+  metric: compute_hours
+  limit: usage-based
+  notes: Kubernetes-executor compute billed per hour; not a hard request limit.
+policies:
+- name: Resource-Bound Throughput
+  description: Self-hosted API throughput scales with host CPU/memory and executor type.
+- name: Plan Allowances
+  description: Mage Pro enforces block-run and AI-token allowances per subscription tier.
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter and honor Retry-After when throttled.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
