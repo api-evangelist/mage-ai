@@ -1,0 +1,25 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/mage-ai-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+  - query
+schemes:
+- name: ApiKeyAuth
+  type: apiKey
+  in: query
+  parameter: api_key
+  description: API key passed as the api_key query parameter or in the request body.
+  sources:
+  - openapi/mage-ai-openapi.yml
+- name: OAuthToken
+  type: apiKey
+  in: header
+  parameter: OAUTH-TOKEN
+  description: Decoded OAuth token passed in the OAUTH-TOKEN header, or the raw token passed
+    via the oauth_token cookie.
+  sources:
+  - openapi/mage-ai-openapi.yml

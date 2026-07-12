@@ -114,6 +114,12 @@ apis:
     schedule, event, and API trigger types - that govern when and how pipelines
     run.
 common:
+- type: VulnerabilityDisclosure
+  url: security/mage-ai-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/mage-ai-domain-security.yml
+- type: Authentication
+  url: authentication/mage-ai-authentication.yml
 - type: GitHubOrganization
   url: https://github.com/mage-ai
 - type: LinkedIn
@@ -128,6 +134,8 @@ common:
   url: rate-limits/mage-ai-rate-limits.yml
 - type: FinOps
   url: finops/mage-ai-finops.yml
+- url: https://www.mage.ai/blog
+  type: Blog
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
