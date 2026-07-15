@@ -114,6 +114,8 @@ apis:
     schedule, event, and API trigger types - that govern when and how pipelines
     run.
 common:
+- type: AgenticAccess
+  url: agentic-access/mage-ai-agentic-access.yml
 - type: VulnerabilityDisclosure
   url: security/mage-ai-vulnerability-disclosure.yml
 - type: DomainSecurity
