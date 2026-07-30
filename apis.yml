@@ -6,7 +6,20 @@ description: Mage is an open-source data pipeline tool for building, running, an
   data pipelines from transformer, data loader, and data exporter blocks. The self-hosted
   Mage app exposes a REST API for triggering pipeline runs and managing pipelines,
   blocks, pipeline runs, and schedules; Mage Pro is the managed cloud edition.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/mage-ai.png
 tags:
 - Data Pipelines
 - Orchestration
@@ -17,102 +30,102 @@ created: '2026-06-20'
 modified: '2026-06-20'
 specificationVersion: '0.19'
 apis:
-- aid: mage-ai:pipeline-triggers-runs
-  name: Mage Pipeline Triggers & Runs API
-  tags:
-  - Triggers
-  - Pipeline Runs
-  - Orchestration
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+- aid: mage-ai:mage-ai-blocks-api
+  name: Mage Blocks API
+  description: Manage data loader, transformer, and data exporter blocks.
   humanURL: https://docs.mage.ai/orchestration/triggers/trigger-pipeline-api
   baseURL: http://localhost:6789/api
-  properties:
-  - url: https://docs.mage.ai/orchestration/triggers/trigger-pipeline-api
-    type: Documentation
-  - url: https://docs.mage.ai/extensibility/api-reference/pipeline-runs/overview
-    type: APIReference
-  - url: openapi/mage-ai-openapi.yml
-    type: OpenAPI
-  - url: collections/mage-ai.postman_collection.json
-    type: PostmanCollection
-  - url: collections/mage-ai.opencollection.json
-    type: OpenCollection
-  - url: https://github.com/mage-ai/mage-ai
-    type: GitHub
-  description: Trigger a configured API trigger by POSTing to its pipeline schedule
-    to create a pipeline run, optionally passing runtime variables, and read the
-    status of resulting pipeline runs.
-- aid: mage-ai:pipelines
-  name: Mage Pipelines API
-  tags:
-  - Pipelines
-  - CRUD
-  - Data Engineering
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.mage.ai/extensibility/api-reference/pipelines/create-pipeline
-  baseURL: http://localhost:6789/api
-  properties:
-  - url: https://docs.mage.ai/extensibility/api-reference/overview
-    type: Documentation
-  - url: https://docs.mage.ai/extensibility/api-reference/pipelines/create-pipeline
-    type: APIReference
-  - url: openapi/mage-ai-openapi.yml
-    type: OpenAPI
-  - url: collections/mage-ai.postman_collection.json
-    type: PostmanCollection
-  - url: collections/mage-ai.opencollection.json
-    type: OpenCollection
-  - url: https://github.com/mage-ai/mage-ai
-    type: GitHub
-  description: List, create, read, update, and delete pipelines in a Mage project
-    using the standard /api/pipelines REST resource with api_key and oauth_token
-    authentication.
-- aid: mage-ai:blocks
-  name: Mage Blocks API
   tags:
   - Blocks
-  - Transformers
-  - Loaders
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.mage.ai/extensibility/api-reference/overview
-  baseURL: http://localhost:6789/api
   properties:
-  - url: https://docs.mage.ai/extensibility/api-reference/overview
-    type: Documentation
-  - url: openapi/mage-ai-openapi.yml
-    type: OpenAPI
-  - url: collections/mage-ai.postman_collection.json
-    type: PostmanCollection
-  - url: collections/mage-ai.opencollection.json
-    type: OpenCollection
-  - url: https://github.com/mage-ai/mage-ai
-    type: GitHub
-  description: Create, read, update, and delete the data loader, transformer, and
-    data exporter blocks that make up a pipeline, nested under the parent pipeline
-    resource.
-- aid: mage-ai:schedules
-  name: Mage Pipeline Schedules API
+  - type: OpenAPI
+    url: openapi/mage-ai-blocks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mage.ai/orchestration/triggers/trigger-pipeline-api
+  - type: APIReference
+    url: https://docs.mage.ai/extensibility/api-reference/pipeline-runs/overview
+  - type: PostmanCollection
+    url: collections/mage-ai.postman_collection.json
+  - type: OpenCollection
+    url: collections/mage-ai.opencollection.json
+  - type: GitHub
+    url: https://github.com/mage-ai/mage-ai
+  - type: Documentation
+    url: https://docs.mage.ai/extensibility/api-reference/overview
+  - type: APIReference
+    url: https://docs.mage.ai/extensibility/api-reference/pipelines/create-pipeline
+- aid: mage-ai:mage-ai-pipeline-runs-api
+  name: Mage Pipeline Runs API
+  description: Trigger pipeline runs and read run status.
+  humanURL: https://docs.mage.ai/orchestration/triggers/trigger-pipeline-api
+  baseURL: http://localhost:6789/api
   tags:
-  - Schedules
-  - Triggers
-  - Scheduling
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.mage.ai/extensibility/api-reference/overview
-  baseURL: http://localhost:6789/api
+  - Pipeline Runs
   properties:
-  - url: https://docs.mage.ai/extensibility/api-reference/overview
-    type: Documentation
-  - url: openapi/mage-ai-openapi.yml
-    type: OpenAPI
-  - url: collections/mage-ai.postman_collection.json
-    type: PostmanCollection
-  - url: collections/mage-ai.opencollection.json
-    type: OpenCollection
-  - url: https://github.com/mage-ai/mage-ai
-    type: GitHub
-  description: Create, read, and update pipeline schedules (triggers) - including
-    schedule, event, and API trigger types - that govern when and how pipelines
-    run.
+  - type: OpenAPI
+    url: openapi/mage-ai-pipeline-runs-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mage.ai/orchestration/triggers/trigger-pipeline-api
+  - type: APIReference
+    url: https://docs.mage.ai/extensibility/api-reference/pipeline-runs/overview
+  - type: PostmanCollection
+    url: collections/mage-ai.postman_collection.json
+  - type: OpenCollection
+    url: collections/mage-ai.opencollection.json
+  - type: GitHub
+    url: https://github.com/mage-ai/mage-ai
+  - type: Documentation
+    url: https://docs.mage.ai/extensibility/api-reference/overview
+  - type: APIReference
+    url: https://docs.mage.ai/extensibility/api-reference/pipelines/create-pipeline
+- aid: mage-ai:mage-ai-pipeline-schedules-api
+  name: Mage Pipeline Schedules API
+  description: Manage triggers (schedule, event, and API triggers).
+  humanURL: https://docs.mage.ai/orchestration/triggers/trigger-pipeline-api
+  baseURL: http://localhost:6789/api
+  tags:
+  - Pipeline Schedules
+  properties:
+  - type: OpenAPI
+    url: openapi/mage-ai-pipeline-schedules-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mage.ai/orchestration/triggers/trigger-pipeline-api
+  - type: APIReference
+    url: https://docs.mage.ai/extensibility/api-reference/pipeline-runs/overview
+  - type: PostmanCollection
+    url: collections/mage-ai.postman_collection.json
+  - type: OpenCollection
+    url: collections/mage-ai.opencollection.json
+  - type: GitHub
+    url: https://github.com/mage-ai/mage-ai
+  - type: Documentation
+    url: https://docs.mage.ai/extensibility/api-reference/overview
+  - type: APIReference
+    url: https://docs.mage.ai/extensibility/api-reference/pipelines/create-pipeline
+- aid: mage-ai:mage-ai-pipelines-api
+  name: Mage Pipelines API
+  description: Manage pipelines.
+  humanURL: https://docs.mage.ai/orchestration/triggers/trigger-pipeline-api
+  baseURL: http://localhost:6789/api
+  tags:
+  - Pipelines
+  properties:
+  - type: OpenAPI
+    url: openapi/mage-ai-pipelines-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mage.ai/orchestration/triggers/trigger-pipeline-api
+  - type: APIReference
+    url: https://docs.mage.ai/extensibility/api-reference/pipeline-runs/overview
+  - type: PostmanCollection
+    url: collections/mage-ai.postman_collection.json
+  - type: OpenCollection
+    url: collections/mage-ai.opencollection.json
+  - type: GitHub
+    url: https://github.com/mage-ai/mage-ai
+  - type: Documentation
+    url: https://docs.mage.ai/extensibility/api-reference/overview
+  - type: APIReference
+    url: https://docs.mage.ai/extensibility/api-reference/pipelines/create-pipeline
 common:
 - type: AgenticAccess
   url: agentic-access/mage-ai-agentic-access.yml
