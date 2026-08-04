@@ -1,0 +1,629 @@
+openapi: 3.0.1
+info:
+  title: Mage API
+  description: >-
+    REST API exposed by the self-hosted Mage data pipeline app. It covers
+    triggering pipeline runs via API triggers (pipeline schedules), reading
+    pipeline runs, and managing pipelines, blocks, and pipeline schedules.
+    Requests are authenticated with an api_key (query parameter or request
+    body) plus an OAuth token supplied via the OAUTH-TOKEN header or the
+    oauth_token cookie. The default local server runs on port 6789.
+  termsOfService: https://www.mage.ai/terms
+  contact:
+    name: Mage
+    url: https://www.mage.ai
+  version: '1.0'
+servers:
+  - url: http://localhost:6789/api
+    description: Default self-hosted Mage app
+  - url: https://{host}/api
+    description: Custom self-hosted or Mage Pro cloud deployment
+    variables:
+      host:
+        default: localhost:6789
+        description: Host and port of the Mage deployment
+security:
+  - ApiKeyAuth: []
+    OAuthToken: []
+tags:
+  - name: Pipeline Runs
+    description: Trigger pipeline runs and read run status.
+  - name: Pipelines
+    description: Manage pipelines.
+  - name: Blocks
+    description: Manage data loader, transformer, and data exporter blocks.
+  - name: Pipeline Schedules
+    description: Manage triggers (schedule, event, and API triggers).
+paths:
+  /pipeline_schedules/{schedule_id}/pipeline_runs/{token}:
+    post:
+      operationId: triggerPipelineRun
+      tags:
+        - Pipeline Runs
+      summary: Trigger a pipeline run via an API trigger
+      description: >-
+        Creates a pipeline run for the pipeline schedule (API trigger)
+        identified by schedule_id. The token is the unique token associated
+        with the API trigger. Runtime variables can be passed nested under
+        pipeline_run.variables or as a flat object.
+      parameters:
+        - name: schedule_id
+          in: path
+          required: true
+          description: The unique ID of the pipeline schedule (API trigger).
+          schema:
+            type: integer
+        - name: token
+          in: path
+          required: true
+          description: The unique token associated with the API trigger.
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TriggerPipelineRunRequest'
+            examples:
+              nested:
+                summary: Nested runtime variables
+                value:
+                  pipeline_run:
+                    variables:
+                      env: staging
+                      schema: public
+      responses:
+        '200':
+          description: Pipeline run created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PipelineRunResponse'
+  /pipeline_runs:
+    get:
+      operationId: listPipelineRuns
+      tags:
+        - Pipeline Runs
+      summary: List pipeline runs
+      parameters:
+        - name: api_key
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: _limit
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: _offset
+          in: query
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A collection of pipeline runs.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PipelineRunsResponse'
+  /pipeline_runs/{id}:
+    get:
+      operationId: readPipelineRun
+      tags:
+        - Pipeline Runs
+      summary: Read a single pipeline run
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+        - name: api_key
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A single pipeline run.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PipelineRunResponse'
+  /pipelines:
+    get:
+      operationId: listPipelines
+      tags:
+        - Pipelines
+      summary: List pipelines
+      parameters:
+        - name: api_key
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A collection of pipelines.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PipelinesResponse'
+    post:
+      operationId: createPipeline
+      tags:
+        - Pipelines
+      summary: Create a pipeline
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePipelineRequest'
+            examples:
+              default:
+                value:
+                  pipeline:
+                    name: arwen-starlight
+                    type: python
+      responses:
+        '200':
+          description: The created pipeline.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PipelineResponse'
+  /pipelines/{uuid}:
+    get:
+      operationId: readPipeline
+      tags:
+        - Pipelines
+      summary: Read a pipeline
+      parameters:
+        - name: uuid
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: api_key
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A single pipeline.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PipelineResponse'
+    put:
+      operationId: updatePipeline
+      tags:
+        - Pipelines
+      summary: Update a pipeline
+      parameters:
+        - name: uuid
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePipelineRequest'
+      responses:
+        '200':
+          description: The updated pipeline.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PipelineResponse'
+    delete:
+      operationId: deletePipeline
+      tags:
+        - Pipelines
+      summary: Delete a pipeline
+      parameters:
+        - name: uuid
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The deleted pipeline.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PipelineResponse'
+  /pipelines/{uuid}/blocks:
+    post:
+      operationId: createBlock
+      tags:
+        - Blocks
+      summary: Create a block in a pipeline
+      parameters:
+        - name: uuid
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateBlockRequest'
+      responses:
+        '200':
+          description: The created block.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlockResponse'
+  /pipelines/{uuid}/blocks/{block_uuid}:
+    get:
+      operationId: readBlock
+      tags:
+        - Blocks
+      summary: Read a block in a pipeline
+      parameters:
+        - name: uuid
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: block_uuid
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A single block.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlockResponse'
+    put:
+      operationId: updateBlock
+      tags:
+        - Blocks
+      summary: Update a block in a pipeline
+      parameters:
+        - name: uuid
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: block_uuid
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateBlockRequest'
+      responses:
+        '200':
+          description: The updated block.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlockResponse'
+    delete:
+      operationId: deleteBlock
+      tags:
+        - Blocks
+      summary: Delete a block from a pipeline
+      parameters:
+        - name: uuid
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: block_uuid
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The deleted block.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlockResponse'
+  /pipeline_schedules:
+    get:
+      operationId: listPipelineSchedules
+      tags:
+        - Pipeline Schedules
+      summary: List pipeline schedules
+      parameters:
+        - name: api_key
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A collection of pipeline schedules.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PipelineSchedulesResponse'
+  /pipelines/{uuid}/pipeline_schedules:
+    post:
+      operationId: createPipelineSchedule
+      tags:
+        - Pipeline Schedules
+      summary: Create a pipeline schedule (trigger) for a pipeline
+      parameters:
+        - name: uuid
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePipelineScheduleRequest'
+      responses:
+        '200':
+          description: The created pipeline schedule.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PipelineScheduleResponse'
+  /pipeline_schedules/{id}:
+    put:
+      operationId: updatePipelineSchedule
+      tags:
+        - Pipeline Schedules
+      summary: Update a pipeline schedule
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePipelineScheduleRequest'
+      responses:
+        '200':
+          description: The updated pipeline schedule.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PipelineScheduleResponse'
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: api_key
+      description: >-
+        API key passed as the api_key query parameter or in the request body.
+    OAuthToken:
+      type: apiKey
+      in: header
+      name: OAUTH-TOKEN
+      description: >-
+        Decoded OAuth token passed in the OAUTH-TOKEN header, or the raw token
+        passed via the oauth_token cookie.
+  schemas:
+    TriggerPipelineRunRequest:
+      type: object
+      properties:
+        pipeline_run:
+          type: object
+          properties:
+            variables:
+              type: object
+              additionalProperties: true
+              description: Runtime variables passed to the pipeline run.
+    PipelineRun:
+      type: object
+      properties:
+        id:
+          type: integer
+        pipeline_uuid:
+          type: string
+        pipeline_schedule_id:
+          type: integer
+        status:
+          type: string
+          enum:
+            - initial
+            - running
+            - completed
+            - failed
+            - cancelled
+        execution_date:
+          type: string
+          format: date-time
+        variables:
+          type: object
+          additionalProperties: true
+    PipelineRunResponse:
+      type: object
+      properties:
+        pipeline_run:
+          $ref: '#/components/schemas/PipelineRun'
+    PipelineRunsResponse:
+      type: object
+      properties:
+        pipeline_runs:
+          type: array
+          items:
+            $ref: '#/components/schemas/PipelineRun'
+    Pipeline:
+      type: object
+      properties:
+        uuid:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+          enum:
+            - python
+            - pyspark
+            - streaming
+            - integration
+        blocks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Block'
+    CreatePipelineRequest:
+      type: object
+      required:
+        - pipeline
+      properties:
+        api_key:
+          type: string
+        pipeline:
+          type: object
+          properties:
+            name:
+              type: string
+            type:
+              type: string
+    UpdatePipelineRequest:
+      type: object
+      properties:
+        pipeline:
+          $ref: '#/components/schemas/Pipeline'
+    PipelineResponse:
+      type: object
+      properties:
+        pipeline:
+          $ref: '#/components/schemas/Pipeline'
+    PipelinesResponse:
+      type: object
+      properties:
+        pipelines:
+          type: array
+          items:
+            $ref: '#/components/schemas/Pipeline'
+    Block:
+      type: object
+      properties:
+        uuid:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+          enum:
+            - data_loader
+            - transformer
+            - data_exporter
+            - scratchpad
+            - sensor
+            - custom
+        language:
+          type: string
+        upstream_blocks:
+          type: array
+          items:
+            type: string
+        downstream_blocks:
+          type: array
+          items:
+            type: string
+    CreateBlockRequest:
+      type: object
+      required:
+        - block
+      properties:
+        block:
+          type: object
+          properties:
+            name:
+              type: string
+            type:
+              type: string
+            language:
+              type: string
+    UpdateBlockRequest:
+      type: object
+      properties:
+        block:
+          $ref: '#/components/schemas/Block'
+    BlockResponse:
+      type: object
+      properties:
+        block:
+          $ref: '#/components/schemas/Block'
+    PipelineSchedule:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        pipeline_uuid:
+          type: string
+        schedule_type:
+          type: string
+          enum:
+            - time
+            - event
+            - api
+        schedule_interval:
+          type: string
+        status:
+          type: string
+          enum:
+            - active
+            - inactive
+        token:
+          type: string
+    CreatePipelineScheduleRequest:
+      type: object
+      required:
+        - pipeline_schedule
+      properties:
+        pipeline_schedule:
+          type: object
+          properties:
+            name:
+              type: string
+            schedule_type:
+              type: string
+            schedule_interval:
+              type: string
+    UpdatePipelineScheduleRequest:
+      type: object
+      properties:
+        pipeline_schedule:
+          $ref: '#/components/schemas/PipelineSchedule'
+    PipelineScheduleResponse:
+      type: object
+      properties:
+        pipeline_schedule:
+          $ref: '#/components/schemas/PipelineSchedule'
+    PipelineSchedulesResponse:
+      type: object
+      properties:
+        pipeline_schedules:
+          type: array
+          items:
+            $ref: '#/components/schemas/PipelineSchedule'

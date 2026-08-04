@@ -1,0 +1,20 @@
+{
+  "provider": "mage-ai",
+  "sources": [
+    "mage-ai-blocks-api-openapi.yml",
+    "mage-ai-pipeline-runs-api-openapi.yml",
+    "mage-ai-pipeline-schedules-api-openapi.yml",
+    "mage-ai-pipelines-api-openapi.yml"
+  ],
+  "outputs": [
+    "mage-ai-blocks-api-openapi.yml",
+    "mage-ai-pipeline-runs-api-openapi.yml",
+    "mage-ai-pipeline-schedules-api-openapi.yml",
+    "mage-ai-pipelines-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
