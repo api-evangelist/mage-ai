@@ -1,0 +1,381 @@
+{
+  "item": [
+    {
+      "id": "43829858-ff5f-430e-802f-f2b00127bcd9",
+      "name": "Pipeline Runs",
+      "description": {
+        "content": "Trigger pipeline runs and read run status.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1a851dc5-702f-4f58-9420-ef1a5b6566ef",
+          "name": "Trigger a pipeline run via an API trigger",
+          "request": {
+            "name": "Trigger a pipeline run via an API trigger",
+            "description": {
+              "content": "Creates a pipeline run for the pipeline schedule (API trigger) identified by schedule_id. The token is the unique token associated with the API trigger. Runtime variables can be passed nested under pipeline_run.variables or as a flat object.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pipeline_schedules",
+                ":schedule_id",
+                "pipeline_runs",
+                ":token"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "schedule_id",
+                  "description": "(Required) The unique ID of the pipeline schedule (API trigger)."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "token",
+                  "description": "(Required) The unique token associated with the API trigger."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pipeline_run\": {\n    \"variables\": {\n      \"key_0\": 2070.847134197866,\n      \"key_1\": false\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "641c098b-f6c6-4449-9986-c143acd132ee",
+              "name": "Pipeline run created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pipeline_schedules",
+                    ":schedule_id",
+                    "pipeline_runs",
+                    ":token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "schedule_id",
+                      "description": "(Required) The unique ID of the pipeline schedule (API trigger)."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "token",
+                      "description": "(Required) The unique token associated with the API trigger."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pipeline_run\": {\n    \"variables\": {\n      \"env\": \"staging\",\n      \"schema\": \"public\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pipeline_run\": {\n    \"id\": 6356,\n    \"pipeline_uuid\": \"string\",\n    \"pipeline_schedule_id\": 7771,\n    \"status\": \"cancelled\",\n    \"execution_date\": \"2010-07-13T12:35:45.571Z\",\n    \"variables\": {\n      \"key_0\": 1284\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6d83a53f-70a2-4fe1-aa1e-f6c286b2ac48",
+          "name": "List pipeline runs",
+          "request": {
+            "name": "List pipeline runs",
+            "description": {},
+            "url": {
+              "path": [
+                "pipeline_runs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "_limit",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "_offset",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7ec314f2-fbfd-4847-856c-e715bb9c19e2",
+              "name": "A collection of pipeline runs.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pipeline_runs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "_offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pipeline_runs\": [\n    {\n      \"id\": 4274,\n      \"pipeline_uuid\": \"string\",\n      \"pipeline_schedule_id\": 2059,\n      \"status\": \"cancelled\",\n      \"execution_date\": \"2025-02-20T02:54:54.125Z\",\n      \"variables\": {\n        \"key_0\": 130.0024348097184\n      }\n    },\n    {\n      \"id\": 2120,\n      \"pipeline_uuid\": \"string\",\n      \"pipeline_schedule_id\": 9257,\n      \"status\": \"initial\",\n      \"execution_date\": \"1960-09-05T07:22:05.120Z\",\n      \"variables\": {\n        \"key_0\": \"string\",\n        \"key_1\": 9500,\n        \"key_2\": 3318.5837397415517\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4bce29ec-42ef-467f-8898-5d4434a05910",
+          "name": "Read a single pipeline run",
+          "request": {
+            "name": "Read a single pipeline run",
+            "description": {},
+            "url": {
+              "path": [
+                "pipeline_runs",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6cd70fe0-b249-48ee-973e-49873f89428e",
+              "name": "A single pipeline run.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pipeline_runs",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pipeline_run\": {\n    \"id\": 6356,\n    \"pipeline_uuid\": \"string\",\n    \"pipeline_schedule_id\": 7771,\n    \"status\": \"cancelled\",\n    \"execution_date\": \"2010-07-13T12:35:45.571Z\",\n    \"variables\": {\n      \"key_0\": 1284\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:6789/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4ef3bcae-f599-4132-bf5c-0e66cc2cceb8",
+    "name": "Mage Blocks Pipeline Runs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API exposed by the self-hosted Mage data pipeline app. It covers triggering pipeline runs via API triggers (pipeline schedules), reading pipeline runs, and managing pipelines, blocks, and pipeline schedules. Requests are authenticated with an api_key (query parameter or request body) plus an OAuth token supplied via the OAUTH-TOKEN header or the oauth_token cookie. The default local server runs on port 6789.\n\nContact Support:\n Name: Mage",
+      "type": "text/plain"
+    }
+  }
+}

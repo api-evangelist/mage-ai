@@ -1,0 +1,88 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mage Blocks Pipeline Schedules API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Pipeline Schedules",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List pipeline schedules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:6789/api/pipeline_schedules",
+            "params": [
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List pipeline schedules"
+        },
+        {
+          "info": {
+            "name": "Create a pipeline schedule (trigger) for a pipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:6789/api/pipelines/:uuid/pipeline_schedules",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a pipeline schedule (trigger) for a pipeline"
+        },
+        {
+          "info": {
+            "name": "Update a pipeline schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:6789/api/pipeline_schedules/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a pipeline schedule"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

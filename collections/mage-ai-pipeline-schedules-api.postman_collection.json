@@ -1,0 +1,355 @@
+{
+  "item": [
+    {
+      "id": "176a11c5-a935-4b9c-8e81-36a5249d7eff",
+      "name": "Pipeline Schedules",
+      "description": {
+        "content": "Manage triggers (schedule, event, and API triggers).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9f9b470b-54b3-4566-8b90-0d8c36e38cbd",
+          "name": "List pipeline schedules",
+          "request": {
+            "name": "List pipeline schedules",
+            "description": {},
+            "url": {
+              "path": [
+                "pipeline_schedules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4cd71945-7328-4c75-944e-cc47baddc8c3",
+              "name": "A collection of pipeline schedules.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pipeline_schedules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pipeline_schedules\": [\n    {\n      \"id\": 8496,\n      \"name\": \"string\",\n      \"pipeline_uuid\": \"string\",\n      \"schedule_type\": \"api\",\n      \"schedule_interval\": \"string\",\n      \"status\": \"active\",\n      \"token\": \"string\"\n    },\n    {\n      \"id\": 81,\n      \"name\": \"string\",\n      \"pipeline_uuid\": \"string\",\n      \"schedule_type\": \"time\",\n      \"schedule_interval\": \"string\",\n      \"status\": \"active\",\n      \"token\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3348a633-ea9e-4571-9bda-4a954f3cf42e",
+          "name": "Create a pipeline schedule (trigger) for a pipeline",
+          "request": {
+            "name": "Create a pipeline schedule (trigger) for a pipeline",
+            "description": {},
+            "url": {
+              "path": [
+                "pipelines",
+                ":uuid",
+                "pipeline_schedules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "uuid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pipeline_schedule\": {\n    \"name\": \"<string>\",\n    \"schedule_type\": \"<string>\",\n    \"schedule_interval\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "663fc3e6-92db-481d-87a7-665989b52d2f",
+              "name": "The created pipeline schedule.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pipelines",
+                    ":uuid",
+                    "pipeline_schedules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pipeline_schedule\": {\n    \"name\": \"<string>\",\n    \"schedule_type\": \"<string>\",\n    \"schedule_interval\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pipeline_schedule\": {\n    \"id\": 2482,\n    \"name\": \"string\",\n    \"pipeline_uuid\": \"string\",\n    \"schedule_type\": \"api\",\n    \"schedule_interval\": \"string\",\n    \"status\": \"active\",\n    \"token\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "441677b0-566c-43ac-a3fb-b3fc67eda06b",
+          "name": "Update a pipeline schedule",
+          "request": {
+            "name": "Update a pipeline schedule",
+            "description": {},
+            "url": {
+              "path": [
+                "pipeline_schedules",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pipeline_schedule\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"pipeline_uuid\": \"<string>\",\n    \"schedule_type\": \"<string>\",\n    \"schedule_interval\": \"<string>\",\n    \"status\": \"<string>\",\n    \"token\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "546af0a5-ded2-427e-aa74-b56678aace38",
+              "name": "The updated pipeline schedule.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pipeline_schedules",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pipeline_schedule\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"pipeline_uuid\": \"<string>\",\n    \"schedule_type\": \"<string>\",\n    \"schedule_interval\": \"<string>\",\n    \"status\": \"<string>\",\n    \"token\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pipeline_schedule\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"pipeline_uuid\": \"<string>\",\n    \"schedule_type\": \"<string>\",\n    \"schedule_interval\": \"<string>\",\n    \"status\": \"<string>\",\n    \"token\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:6789/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "58ffcc01-c2fd-4a69-9402-ec350fd6cc58",
+    "name": "Mage Blocks Pipeline Schedules API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API exposed by the self-hosted Mage data pipeline app. It covers triggering pipeline runs via API triggers (pipeline schedules), reading pipeline runs, and managing pipelines, blocks, and pipeline schedules. Requests are authenticated with an api_key (query parameter or request body) plus an OAuth token supplied via the OAUTH-TOKEN header or the oauth_token cookie. The default local server runs on port 6789.\n\nContact Support:\n Name: Mage",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,507 @@
+{
+  "item": [
+    {
+      "id": "f2c816d4-ab82-49a8-b85b-ce741b29a38e",
+      "name": "Blocks",
+      "description": {
+        "content": "Manage data loader, transformer, and data exporter blocks.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "776d863b-5a87-43f1-acd6-a4b3029674c9",
+          "name": "Create a block in a pipeline",
+          "request": {
+            "name": "Create a block in a pipeline",
+            "description": {},
+            "url": {
+              "path": [
+                "pipelines",
+                ":uuid",
+                "blocks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "uuid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"block\": {\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"language\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "754a4ca3-d843-4887-aa0f-558dd9595ac4",
+              "name": "The created block.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pipelines",
+                    ":uuid",
+                    "blocks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"block\": {\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"language\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"block\": {\n    \"uuid\": \"string\",\n    \"name\": \"string\",\n    \"type\": \"data_loader\",\n    \"language\": \"string\",\n    \"upstream_blocks\": [\n      \"string\",\n      \"string\"\n    ],\n    \"downstream_blocks\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5d02fa50-5c8c-4660-9576-8938b91597fb",
+          "name": "Read a block in a pipeline",
+          "request": {
+            "name": "Read a block in a pipeline",
+            "description": {},
+            "url": {
+              "path": [
+                "pipelines",
+                ":uuid",
+                "blocks",
+                ":block_uuid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "uuid",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "block_uuid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2bedd354-ab41-4392-8847-da60fed99092",
+              "name": "A single block.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pipelines",
+                    ":uuid",
+                    "blocks",
+                    ":block_uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uuid",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "block_uuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"block\": {\n    \"uuid\": \"string\",\n    \"name\": \"string\",\n    \"type\": \"data_exporter\",\n    \"language\": \"string\",\n    \"upstream_blocks\": [\n      \"string\",\n      \"string\"\n    ],\n    \"downstream_blocks\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "57b26b93-0b6a-4731-964f-4e04f8e1e66e",
+          "name": "Update a block in a pipeline",
+          "request": {
+            "name": "Update a block in a pipeline",
+            "description": {},
+            "url": {
+              "path": [
+                "pipelines",
+                ":uuid",
+                "blocks",
+                ":block_uuid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "uuid",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "block_uuid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"block\": {\n    \"uuid\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"language\": \"<string>\",\n    \"upstream_blocks\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"downstream_blocks\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cef80898-e233-48c3-859e-6db234eaeabf",
+              "name": "The updated block.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pipelines",
+                    ":uuid",
+                    "blocks",
+                    ":block_uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uuid",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "block_uuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"block\": {\n    \"uuid\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"language\": \"<string>\",\n    \"upstream_blocks\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"downstream_blocks\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"block\": {\n    \"uuid\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"language\": \"<string>\",\n    \"upstream_blocks\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"downstream_blocks\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ef025c82-1f32-4a30-b3d1-92c9262cd5af",
+          "name": "Delete a block from a pipeline",
+          "request": {
+            "name": "Delete a block from a pipeline",
+            "description": {},
+            "url": {
+              "path": [
+                "pipelines",
+                ":uuid",
+                "blocks",
+                ":block_uuid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "uuid",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "block_uuid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "32913c0b-d6e9-4836-a364-2290f5033fc6",
+              "name": "The deleted block.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pipelines",
+                    ":uuid",
+                    "blocks",
+                    ":block_uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uuid",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "block_uuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"block\": {\n    \"uuid\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"language\": \"<string>\",\n    \"upstream_blocks\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"downstream_blocks\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:6789/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0c2256ce-c668-4a44-b56a-b29293498436",
+    "name": "Mage Blocks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API exposed by the self-hosted Mage data pipeline app. It covers triggering pipeline runs via API triggers (pipeline schedules), reading pipeline runs, and managing pipelines, blocks, and pipeline schedules. Requests are authenticated with an api_key (query parameter or request body) plus an OAuth token supplied via the OAUTH-TOKEN header or the oauth_token cookie. The default local server runs on port 6789.\n\nContact Support:\n Name: Mage",
+      "type": "text/plain"
+    }
+  }
+}

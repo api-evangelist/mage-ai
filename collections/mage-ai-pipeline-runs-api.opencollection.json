@@ -1,0 +1,106 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mage Blocks Pipeline Runs API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Pipeline Runs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Trigger a pipeline run via an API trigger",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:6789/api/pipeline_schedules/:schedule_id/pipeline_runs/:token",
+            "params": [
+              {
+                "name": "schedule_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique ID of the pipeline schedule (API trigger)."
+              },
+              {
+                "name": "token",
+                "value": "",
+                "type": "path",
+                "description": "The unique token associated with the API trigger."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a pipeline run for the pipeline schedule (API trigger) identified by schedule_id. The token is the unique token associated with the API trigger. Runtime variables can be passed nested under pipeline_run.variables or as a flat object."
+        },
+        {
+          "info": {
+            "name": "List pipeline runs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:6789/api/pipeline_runs",
+            "params": [
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "_limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "_offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List pipeline runs"
+        },
+        {
+          "info": {
+            "name": "Read a single pipeline run",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:6789/api/pipeline_runs/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Read a single pipeline run"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

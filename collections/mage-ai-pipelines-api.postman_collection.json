@@ -1,0 +1,525 @@
+{
+  "item": [
+    {
+      "id": "9a25ba7a-9a47-400d-bb07-88b48e23294a",
+      "name": "Pipelines",
+      "description": {
+        "content": "Manage pipelines.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "62232054-94e4-4bab-8e7a-ffa829b4672b",
+          "name": "List pipelines",
+          "request": {
+            "name": "List pipelines",
+            "description": {},
+            "url": {
+              "path": [
+                "pipelines"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "31403f4a-4321-42fe-a59f-0549e98277c5",
+              "name": "A collection of pipelines.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pipelines"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pipelines\": [\n    {\n      \"uuid\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"python\",\n      \"blocks\": [\n        {\n          \"uuid\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"sensor\",\n          \"language\": \"string\",\n          \"upstream_blocks\": [\n            \"string\",\n            \"string\"\n          ],\n          \"downstream_blocks\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"uuid\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"scratchpad\",\n          \"language\": \"string\",\n          \"upstream_blocks\": [\n            \"string\",\n            \"string\"\n          ],\n          \"downstream_blocks\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ]\n    },\n    {\n      \"uuid\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"pyspark\",\n      \"blocks\": [\n        {\n          \"uuid\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"custom\",\n          \"language\": \"string\",\n          \"upstream_blocks\": [\n            \"string\",\n            \"string\"\n          ],\n          \"downstream_blocks\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"uuid\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"scratchpad\",\n          \"language\": \"string\",\n          \"upstream_blocks\": [\n            \"string\",\n            \"string\"\n          ],\n          \"downstream_blocks\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d71fce00-b40c-4021-8122-3b6ded88fe49",
+          "name": "Create a pipeline",
+          "request": {
+            "name": "Create a pipeline",
+            "description": {},
+            "url": {
+              "path": [
+                "pipelines"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pipeline\": {\n    \"name\": \"<string>\",\n    \"type\": \"<string>\"\n  },\n  \"api_key\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ed338c1f-3249-49b7-a9d1-d024690e5e7a",
+              "name": "The created pipeline.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pipelines"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pipeline\": {\n    \"name\": \"arwen-starlight\",\n    \"type\": \"python\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pipeline\": {\n    \"uuid\": \"string\",\n    \"name\": \"string\",\n    \"type\": \"python\",\n    \"blocks\": [\n      {\n        \"uuid\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"transformer\",\n        \"language\": \"string\",\n        \"upstream_blocks\": [\n          \"string\",\n          \"string\"\n        ],\n        \"downstream_blocks\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"uuid\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"transformer\",\n        \"language\": \"string\",\n        \"upstream_blocks\": [\n          \"string\",\n          \"string\"\n        ],\n        \"downstream_blocks\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "178b4dca-66ba-45dd-8201-bd8a6f1f752e",
+          "name": "Read a pipeline",
+          "request": {
+            "name": "Read a pipeline",
+            "description": {},
+            "url": {
+              "path": [
+                "pipelines",
+                ":uuid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "uuid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fdc48d98-583a-4381-a7d9-5a46d7291af7",
+              "name": "A single pipeline.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pipelines",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pipeline\": {\n    \"uuid\": \"string\",\n    \"name\": \"string\",\n    \"type\": \"python\",\n    \"blocks\": [\n      {\n        \"uuid\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"transformer\",\n        \"language\": \"string\",\n        \"upstream_blocks\": [\n          \"string\",\n          \"string\"\n        ],\n        \"downstream_blocks\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"uuid\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"transformer\",\n        \"language\": \"string\",\n        \"upstream_blocks\": [\n          \"string\",\n          \"string\"\n        ],\n        \"downstream_blocks\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6ab055c5-757f-4755-99a9-f8a28273f572",
+          "name": "Update a pipeline",
+          "request": {
+            "name": "Update a pipeline",
+            "description": {},
+            "url": {
+              "path": [
+                "pipelines",
+                ":uuid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "uuid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pipeline\": {\n    \"uuid\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"blocks\": [\n      {\n        \"uuid\": \"<string>\",\n        \"name\": \"<string>\",\n        \"type\": \"<string>\",\n        \"language\": \"<string>\",\n        \"upstream_blocks\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"downstream_blocks\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"uuid\": \"<string>\",\n        \"name\": \"<string>\",\n        \"type\": \"<string>\",\n        \"language\": \"<string>\",\n        \"upstream_blocks\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"downstream_blocks\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2903ef4f-a753-4588-ac02-f9b0e0437414",
+              "name": "The updated pipeline.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pipelines",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pipeline\": {\n    \"uuid\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"blocks\": [\n      {\n        \"uuid\": \"<string>\",\n        \"name\": \"<string>\",\n        \"type\": \"<string>\",\n        \"language\": \"<string>\",\n        \"upstream_blocks\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"downstream_blocks\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"uuid\": \"<string>\",\n        \"name\": \"<string>\",\n        \"type\": \"<string>\",\n        \"language\": \"<string>\",\n        \"upstream_blocks\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"downstream_blocks\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pipeline\": {\n    \"uuid\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"blocks\": [\n      {\n        \"uuid\": \"<string>\",\n        \"name\": \"<string>\",\n        \"type\": \"<string>\",\n        \"language\": \"<string>\",\n        \"upstream_blocks\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"downstream_blocks\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"uuid\": \"<string>\",\n        \"name\": \"<string>\",\n        \"type\": \"<string>\",\n        \"language\": \"<string>\",\n        \"upstream_blocks\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"downstream_blocks\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e50bfc78-54f2-4102-8572-105a0d388ef5",
+          "name": "Delete a pipeline",
+          "request": {
+            "name": "Delete a pipeline",
+            "description": {},
+            "url": {
+              "path": [
+                "pipelines",
+                ":uuid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "uuid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "69b821c0-9592-46d5-9a63-809124e9d69a",
+              "name": "The deleted pipeline.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pipelines",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pipeline\": {\n    \"uuid\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"blocks\": [\n      {\n        \"uuid\": \"<string>\",\n        \"name\": \"<string>\",\n        \"type\": \"<string>\",\n        \"language\": \"<string>\",\n        \"upstream_blocks\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"downstream_blocks\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"uuid\": \"<string>\",\n        \"name\": \"<string>\",\n        \"type\": \"<string>\",\n        \"language\": \"<string>\",\n        \"upstream_blocks\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"downstream_blocks\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:6789/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3ec2c5b0-e217-46ee-8b27-c2f571caf5d1",
+    "name": "Mage Blocks Pipelines API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API exposed by the self-hosted Mage data pipeline app. It covers triggering pipeline runs via API triggers (pipeline schedules), reading pipeline runs, and managing pipelines, blocks, and pipeline schedules. Requests are authenticated with an api_key (query parameter or request body) plus an OAuth token supplied via the OAUTH-TOKEN header or the oauth_token cookie. The default local server runs on port 6789.\n\nContact Support:\n Name: Mage",
+      "type": "text/plain"
+    }
+  }
+}
