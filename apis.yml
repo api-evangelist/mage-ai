@@ -28,7 +28,7 @@ tags:
 - Open Source
 created: '2026-06-20'
 modified: '2026-06-20'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: mage-ai:mage-ai-blocks-api
   name: Mage Blocks API
