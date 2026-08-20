@@ -21,6 +21,12 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/mage-ai.png
 tags:
+- Data Pipeline
+- Orchestration
+- ETL
+- Data Engineering
+- Open-Source
+tags_raw:
 - Data Pipelines
 - Orchestration
 - ETL
