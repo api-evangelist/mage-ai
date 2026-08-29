@@ -6,6 +6,18 @@ description: Mage is an open-source data pipeline tool for building, running, an
   data pipelines from transformer, data loader, and data exporter blocks. The self-hosted
   Mage app exposes a REST API for triggering pipeline runs and managing pipelines,
   blocks, pipeline runs, and schedules; Mage Pro is the managed cloud edition.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
