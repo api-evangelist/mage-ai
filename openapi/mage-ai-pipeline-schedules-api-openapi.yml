@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Mage Blocks Pipeline Schedules API
+  title: Mage Pipeline Schedules API
   description: REST API exposed by the self-hosted Mage data pipeline app. It covers triggering pipeline runs via API triggers (pipeline schedules), reading pipeline runs, and managing pipelines, blocks, and pipeline schedules. Requests are authenticated with an api_key (query parameter or request body) plus an OAuth token supplied via the OAUTH-TOKEN header or the oauth_token cookie. The default local server runs on port 6789.
   termsOfService: https://www.mage.ai/terms
   contact:
@@ -108,11 +108,6 @@ components:
               type: string
             schedule_interval:
               type: string
-    PipelineScheduleResponse:
-      type: object
-      properties:
-        pipeline_schedule:
-          $ref: '#/components/schemas/PipelineSchedule'
     PipelineSchedulesResponse:
       type: object
       properties:
@@ -120,6 +115,11 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PipelineSchedule'
+    UpdatePipelineScheduleRequest:
+      type: object
+      properties:
+        pipeline_schedule:
+          $ref: '#/components/schemas/PipelineSchedule'
     PipelineSchedule:
       type: object
       properties:
@@ -144,7 +144,7 @@ components:
           - inactive
         token:
           type: string
-    UpdatePipelineScheduleRequest:
+    PipelineScheduleResponse:
       type: object
       properties:
         pipeline_schedule:

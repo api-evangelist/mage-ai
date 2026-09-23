@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Mage Blocks Pipelines API
+  title: Mage Pipelines API
   description: REST API exposed by the self-hosted Mage data pipeline app. It covers triggering pipeline runs via API triggers (pipeline schedules), reading pipeline runs, and managing pipelines, blocks, and pipeline schedules. Requests are authenticated with an api_key (query parameter or request body) plus an OAuth token supplied via the OAUTH-TOKEN header or the oauth_token cookie. The default local server runs on port 6789.
   termsOfService: https://www.mage.ai/terms
   contact:
@@ -134,25 +134,21 @@ paths:
                 $ref: '#/components/schemas/PipelineResponse'
 components:
   schemas:
-    Pipeline:
+    CreatePipelineRequest:
       type: object
+      required:
+      - pipeline
       properties:
-        uuid:
+        api_key:
           type: string
-        name:
-          type: string
-        type:
-          type: string
-          enum:
-          - python
-          - pyspark
-          - streaming
-          - integration
-        blocks:
-          type: array
-          items:
-            $ref: '#/components/schemas/Block'
-    UpdatePipelineRequest:
+        pipeline:
+          type: object
+          properties:
+            name:
+              type: string
+            type:
+              type: string
+    PipelineResponse:
       type: object
       properties:
         pipeline:
@@ -183,25 +179,29 @@ components:
           type: array
           items:
             type: string
-    PipelineResponse:
+    Pipeline:
+      type: object
+      properties:
+        uuid:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+          enum:
+          - python
+          - pyspark
+          - streaming
+          - integration
+        blocks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Block'
+    UpdatePipelineRequest:
       type: object
       properties:
         pipeline:
           $ref: '#/components/schemas/Pipeline'
-    CreatePipelineRequest:
-      type: object
-      required:
-      - pipeline
-      properties:
-        api_key:
-          type: string
-        pipeline:
-          type: object
-          properties:
-            name:
-              type: string
-            type:
-              type: string
     PipelinesResponse:
       type: object
       properties:

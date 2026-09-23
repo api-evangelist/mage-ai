@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Mage Blocks Pipeline Runs API
+  title: Mage Pipeline Runs API
   description: REST API exposed by the self-hosted Mage data pipeline app. It covers triggering pipeline runs via API triggers (pipeline schedules), reading pipeline runs, and managing pipelines, blocks, and pipeline schedules. Requests are authenticated with an api_key (query parameter or request body) plus an OAuth token supplied via the OAUTH-TOKEN header or the oauth_token cookie. The default local server runs on port 6789.
   termsOfService: https://www.mage.ai/terms
   contact:
@@ -119,21 +119,13 @@ paths:
                 $ref: '#/components/schemas/PipelineRunResponse'
 components:
   schemas:
-    TriggerPipelineRunRequest:
+    PipelineRunsResponse:
       type: object
       properties:
-        pipeline_run:
-          type: object
-          properties:
-            variables:
-              type: object
-              additionalProperties: true
-              description: Runtime variables passed to the pipeline run.
-    PipelineRunResponse:
-      type: object
-      properties:
-        pipeline_run:
-          $ref: '#/components/schemas/PipelineRun'
+        pipeline_runs:
+          type: array
+          items:
+            $ref: '#/components/schemas/PipelineRun'
     PipelineRun:
       type: object
       properties:
@@ -157,13 +149,21 @@ components:
         variables:
           type: object
           additionalProperties: true
-    PipelineRunsResponse:
+    PipelineRunResponse:
       type: object
       properties:
-        pipeline_runs:
-          type: array
-          items:
-            $ref: '#/components/schemas/PipelineRun'
+        pipeline_run:
+          $ref: '#/components/schemas/PipelineRun'
+    TriggerPipelineRunRequest:
+      type: object
+      properties:
+        pipeline_run:
+          type: object
+          properties:
+            variables:
+              type: object
+              additionalProperties: true
+              description: Runtime variables passed to the pipeline run.
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
