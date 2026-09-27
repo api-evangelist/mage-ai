@@ -7,16 +7,22 @@ description: Mage is an open-source data pipeline tool for building, running, an
   Mage app exposes a REST API for triggering pipeline runs and managing pipelines,
   blocks, pipeline runs, and schedules; Mage Pro is the managed cloud edition.
 deliveryModel:
-  model: saas
-  open_source: false
+  model: open-core
+  license: Apache-2.0
+  license_evidence:
+    repo: mage-ai/mage-ai
+    spdx: Apache-2.0
+    stars: 8825
+  open_source: true
   commercial: true
   callable_host: false
-  label: Hosted service · you call their endpoint
+  label: Open core · an OSS project plus a commercial hosted product
   confidence: medium
   source:
   - openapi
   - pricing
-  generated: '2026-08-28'
+  - repository-license
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: freemium
@@ -39,13 +45,14 @@ tags:
 - Orchestration
 - ETL
 - Data Engineering
-- Open-Source
+- Open Source
 tags_raw:
 - Data Pipelines
 - Orchestration
 - ETL
 - Data Engineering
 - Open Source
+- Open-Source
 created: '2026-06-20'
 modified: '2026-06-20'
 specificationVersion: '0.23'

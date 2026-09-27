@@ -94,6 +94,11 @@ paths:
                 $ref: '#/components/schemas/PipelineScheduleResponse'
 components:
   schemas:
+    PipelineScheduleResponse:
+      type: object
+      properties:
+        pipeline_schedule:
+          $ref: '#/components/schemas/PipelineSchedule'
     CreatePipelineScheduleRequest:
       type: object
       required:
@@ -108,13 +113,6 @@ components:
               type: string
             schedule_interval:
               type: string
-    PipelineSchedulesResponse:
-      type: object
-      properties:
-        pipeline_schedules:
-          type: array
-          items:
-            $ref: '#/components/schemas/PipelineSchedule'
     UpdatePipelineScheduleRequest:
       type: object
       properties:
@@ -144,11 +142,13 @@ components:
           - inactive
         token:
           type: string
-    PipelineScheduleResponse:
+    PipelineSchedulesResponse:
       type: object
       properties:
-        pipeline_schedule:
-          $ref: '#/components/schemas/PipelineSchedule'
+        pipeline_schedules:
+          type: array
+          items:
+            $ref: '#/components/schemas/PipelineSchedule'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

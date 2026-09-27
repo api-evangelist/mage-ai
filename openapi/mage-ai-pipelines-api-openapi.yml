@@ -134,6 +134,23 @@ paths:
                 $ref: '#/components/schemas/PipelineResponse'
 components:
   schemas:
+    PipelineResponse:
+      type: object
+      properties:
+        pipeline:
+          $ref: '#/components/schemas/Pipeline'
+    PipelinesResponse:
+      type: object
+      properties:
+        pipelines:
+          type: array
+          items:
+            $ref: '#/components/schemas/Pipeline'
+    UpdatePipelineRequest:
+      type: object
+      properties:
+        pipeline:
+          $ref: '#/components/schemas/Pipeline'
     CreatePipelineRequest:
       type: object
       required:
@@ -148,11 +165,6 @@ components:
               type: string
             type:
               type: string
-    PipelineResponse:
-      type: object
-      properties:
-        pipeline:
-          $ref: '#/components/schemas/Pipeline'
     Block:
       type: object
       properties:
@@ -197,18 +209,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Block'
-    UpdatePipelineRequest:
-      type: object
-      properties:
-        pipeline:
-          $ref: '#/components/schemas/Pipeline'
-    PipelinesResponse:
-      type: object
-      properties:
-        pipelines:
-          type: array
-          items:
-            $ref: '#/components/schemas/Pipeline'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

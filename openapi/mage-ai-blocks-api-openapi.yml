@@ -126,11 +126,6 @@ paths:
                 $ref: '#/components/schemas/BlockResponse'
 components:
   schemas:
-    UpdateBlockRequest:
-      type: object
-      properties:
-        block:
-          $ref: '#/components/schemas/Block'
     CreateBlockRequest:
       type: object
       required:
@@ -145,11 +140,6 @@ components:
               type: string
             language:
               type: string
-    BlockResponse:
-      type: object
-      properties:
-        block:
-          $ref: '#/components/schemas/Block'
     Block:
       type: object
       properties:
@@ -176,6 +166,16 @@ components:
           type: array
           items:
             type: string
+    BlockResponse:
+      type: object
+      properties:
+        block:
+          $ref: '#/components/schemas/Block'
+    UpdateBlockRequest:
+      type: object
+      properties:
+        block:
+          $ref: '#/components/schemas/Block'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

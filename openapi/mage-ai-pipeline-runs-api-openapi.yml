@@ -119,13 +119,6 @@ paths:
                 $ref: '#/components/schemas/PipelineRunResponse'
 components:
   schemas:
-    PipelineRunsResponse:
-      type: object
-      properties:
-        pipeline_runs:
-          type: array
-          items:
-            $ref: '#/components/schemas/PipelineRun'
     PipelineRun:
       type: object
       properties:
@@ -164,6 +157,13 @@ components:
               type: object
               additionalProperties: true
               description: Runtime variables passed to the pipeline run.
+    PipelineRunsResponse:
+      type: object
+      properties:
+        pipeline_runs:
+          type: array
+          items:
+            $ref: '#/components/schemas/PipelineRun'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
