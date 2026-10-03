@@ -94,30 +94,18 @@ paths:
                 $ref: '#/components/schemas/PipelineScheduleResponse'
 components:
   schemas:
-    PipelineScheduleResponse:
-      type: object
-      properties:
-        pipeline_schedule:
-          $ref: '#/components/schemas/PipelineSchedule'
-    CreatePipelineScheduleRequest:
-      type: object
-      required:
-      - pipeline_schedule
-      properties:
-        pipeline_schedule:
-          type: object
-          properties:
-            name:
-              type: string
-            schedule_type:
-              type: string
-            schedule_interval:
-              type: string
     UpdatePipelineScheduleRequest:
       type: object
       properties:
         pipeline_schedule:
           $ref: '#/components/schemas/PipelineSchedule'
+    PipelineSchedulesResponse:
+      type: object
+      properties:
+        pipeline_schedules:
+          type: array
+          items:
+            $ref: '#/components/schemas/PipelineSchedule'
     PipelineSchedule:
       type: object
       properties:
@@ -142,13 +130,25 @@ components:
           - inactive
         token:
           type: string
-    PipelineSchedulesResponse:
+    CreatePipelineScheduleRequest:
+      type: object
+      required:
+      - pipeline_schedule
+      properties:
+        pipeline_schedule:
+          type: object
+          properties:
+            name:
+              type: string
+            schedule_type:
+              type: string
+            schedule_interval:
+              type: string
+    PipelineScheduleResponse:
       type: object
       properties:
-        pipeline_schedules:
-          type: array
-          items:
-            $ref: '#/components/schemas/PipelineSchedule'
+        pipeline_schedule:
+          $ref: '#/components/schemas/PipelineSchedule'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

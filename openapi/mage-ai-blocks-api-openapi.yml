@@ -126,20 +126,6 @@ paths:
                 $ref: '#/components/schemas/BlockResponse'
 components:
   schemas:
-    CreateBlockRequest:
-      type: object
-      required:
-      - block
-      properties:
-        block:
-          type: object
-          properties:
-            name:
-              type: string
-            type:
-              type: string
-            language:
-              type: string
     Block:
       type: object
       properties:
@@ -166,12 +152,26 @@ components:
           type: array
           items:
             type: string
-    BlockResponse:
+    UpdateBlockRequest:
       type: object
       properties:
         block:
           $ref: '#/components/schemas/Block'
-    UpdateBlockRequest:
+    CreateBlockRequest:
+      type: object
+      required:
+      - block
+      properties:
+        block:
+          type: object
+          properties:
+            name:
+              type: string
+            type:
+              type: string
+            language:
+              type: string
+    BlockResponse:
       type: object
       properties:
         block:

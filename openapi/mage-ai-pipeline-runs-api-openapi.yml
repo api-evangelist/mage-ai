@@ -119,6 +119,11 @@ paths:
                 $ref: '#/components/schemas/PipelineRunResponse'
 components:
   schemas:
+    PipelineRunResponse:
+      type: object
+      properties:
+        pipeline_run:
+          $ref: '#/components/schemas/PipelineRun'
     PipelineRun:
       type: object
       properties:
@@ -142,11 +147,6 @@ components:
         variables:
           type: object
           additionalProperties: true
-    PipelineRunResponse:
-      type: object
-      properties:
-        pipeline_run:
-          $ref: '#/components/schemas/PipelineRun'
     TriggerPipelineRunRequest:
       type: object
       properties:
