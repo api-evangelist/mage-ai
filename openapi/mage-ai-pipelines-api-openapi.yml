@@ -134,20 +134,29 @@ paths:
                 $ref: '#/components/schemas/PipelineResponse'
 components:
   schemas:
-    CreatePipelineRequest:
+    UpdatePipelineRequest:
       type: object
-      required:
-      - pipeline
       properties:
-        api_key:
-          type: string
         pipeline:
-          type: object
-          properties:
-            name:
-              type: string
-            type:
-              type: string
+          $ref: '#/components/schemas/Pipeline'
+    Pipeline:
+      type: object
+      properties:
+        uuid:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+          enum:
+          - python
+          - pyspark
+          - streaming
+          - integration
+        blocks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Block'
     Block:
       type: object
       properties:
@@ -174,6 +183,20 @@ components:
           type: array
           items:
             type: string
+    CreatePipelineRequest:
+      type: object
+      required:
+      - pipeline
+      properties:
+        api_key:
+          type: string
+        pipeline:
+          type: object
+          properties:
+            name:
+              type: string
+            type:
+              type: string
     PipelinesResponse:
       type: object
       properties:
@@ -181,29 +204,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Pipeline'
-    Pipeline:
-      type: object
-      properties:
-        uuid:
-          type: string
-        name:
-          type: string
-        type:
-          type: string
-          enum:
-          - python
-          - pyspark
-          - streaming
-          - integration
-        blocks:
-          type: array
-          items:
-            $ref: '#/components/schemas/Block'
-    UpdatePipelineRequest:
-      type: object
-      properties:
-        pipeline:
-          $ref: '#/components/schemas/Pipeline'
     PipelineResponse:
       type: object
       properties:
