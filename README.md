@@ -1,4 +1,4 @@
-# Mage (mage-ai)
+# Mage
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,120 +66,123 @@
 
 Mage is an open-source data pipeline tool for building, running, and managing data pipelines from transformer, data loader, and data exporter blocks. The self-hosted Mage app exposes a REST API for triggering pipeline runs and managing pipelines, blocks, pipeline runs, and schedules; Mage Pro is the managed cloud edition.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/mage-ai/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/mage-ai/refs/heads/main/apis.yml)
+**Areas:** Data Pipeline · Orchestration · ETL · Data Engineering · Open Source
 
-## Tags
+## Mage on APIs.io
 
-- Data Pipelines
-- Orchestration
-- ETL
-- Data Engineering
-- Open Source
+Everything profiled for Mage is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/mage-ai/](https://apis.io/providers/mage-ai/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (4)
 
-- **Created:** 2026-06-20
-- **Modified:** 2026-06-20
+- [Mage Blocks API](https://apis.io/apis/mage-ai/mage-ai-blocks-api/) — Manage data loader, transformer, and data exporter blocks.
+- [Mage Pipeline Runs API](https://apis.io/apis/mage-ai/mage-ai-pipeline-runs-api/) — Trigger pipeline runs and read run status.
+- [Mage Pipeline Schedules API](https://apis.io/apis/mage-ai/mage-ai-pipeline-schedules-api/) — Manage triggers (schedule, event, and API triggers).
+- [Mage Pipelines API](https://apis.io/apis/mage-ai/mage-ai-pipelines-api/) — Manage pipelines.
 
-## APIs
+### Published properties
 
-### Mage Pipeline Triggers & Runs API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Trigger a configured API trigger by POSTing to its pipeline schedule to create a pipeline run, optionally passing runtime variables, and read the status of resulting pipeline runs.
+#### Agentic access (1)
 
-- **Human URL:** [https://docs.mage.ai/orchestration/triggers/trigger-pipeline-api](https://docs.mage.ai/orchestration/triggers/trigger-pipeline-api)
-- **Base URL:** `http://localhost:6789/api`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Mage Ai Agentic Access](https://apis.io/agentic-access/mage-ai/mage-ai-agentic-access/)
 
-- Triggers
-- Pipeline Runs
-- Orchestration
+#### Collections (5)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://docs.mage.ai/orchestration/triggers/trigger-pipeline-api)
-- [API Reference](https://docs.mage.ai/extensibility/api-reference/pipeline-runs/overview)
-- [OpenAPI](openapi/mage-ai-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/mage-ai.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mage-ai.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [GitHub](https://github.com/mage-ai/mage-ai)
+- [Mage API](https://apis.io/collections/mage-ai/open-mage-ai/)
+- [Mage Blocks API](https://apis.io/collections/mage-ai/open-mage-ai-blocks-api/)
+- [Mage Blocks Pipeline Runs API](https://apis.io/collections/mage-ai/open-mage-ai-pipeline-runs-api/)
+- [Mage Blocks Pipeline Schedules API](https://apis.io/collections/mage-ai/open-mage-ai-pipeline-schedules-api/)
+- [Mage Blocks Pipelines API](https://apis.io/collections/mage-ai/open-mage-ai-pipelines-api/)
 
-### Mage Pipelines API
+#### Security (3)
 
-List, create, read, update, and delete pipelines in a Mage project using the standard /api/pipelines REST resource with api_key and oauth_token authentication.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://docs.mage.ai/extensibility/api-reference/pipelines/create-pipeline](https://docs.mage.ai/extensibility/api-reference/pipelines/create-pipeline)
-- **Base URL:** `http://localhost:6789/api`
+- [Mage Ai Authentication](https://apis.io/security/mage-ai/mage-ai-authentication/)
+- [Mage Ai Domain Security](https://apis.io/security/mage-ai/mage-ai-domain-security/)
+- [Mage Ai Vulnerability Disclosure](https://apis.io/security/mage-ai/mage-ai-vulnerability-disclosure/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- Pipelines
-- CRUD
-- Data Engineering
+Published plans, tiers and prices.
 
-#### Properties
+- [Mage Ai Plans Pricing](https://apis.io/plans/mage-ai/mage-ai-plans-pricing/)
 
-- [Documentation](https://docs.mage.ai/extensibility/api-reference/overview)
-- [API Reference](https://docs.mage.ai/extensibility/api-reference/pipelines/create-pipeline)
-- [OpenAPI](openapi/mage-ai-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/mage-ai.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mage-ai.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [GitHub](https://github.com/mage-ai/mage-ai)
+#### Rate limits (1)
 
-### Mage Blocks API
+Published request limits.
 
-Create, read, update, and delete the data loader, transformer, and data exporter blocks that make up a pipeline, nested under the parent pipeline resource.
+- [Mage Ai Rate Limits](https://apis.io/rate-limits/mage-ai/mage-ai-rate-limits/)
 
-- **Human URL:** [https://docs.mage.ai/extensibility/api-reference/overview](https://docs.mage.ai/extensibility/api-reference/overview)
-- **Base URL:** `http://localhost:6789/api`
+#### FinOps (1)
 
-#### Tags
+What the API costs to run, by operation.
 
-- Blocks
-- Transformers
-- Loaders
+- [Mage Ai Finops](https://apis.io/finops/mage-ai/mage-ai-finops/)
 
-#### Properties
+## Where to find this API
 
-- [Documentation](https://docs.mage.ai/extensibility/api-reference/overview)
-- [OpenAPI](openapi/mage-ai-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/mage-ai.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mage-ai.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [GitHub](https://github.com/mage-ai/mage-ai)
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-### Mage Pipeline Schedules API
-
-Create, read, and update pipeline schedules (triggers) - including schedule, event, and API trigger types - that govern when and how pipelines run.
-
-- **Human URL:** [https://docs.mage.ai/extensibility/api-reference/overview](https://docs.mage.ai/extensibility/api-reference/overview)
-- **Base URL:** `http://localhost:6789/api`
-
-#### Tags
-
-- Schedules
-- Triggers
-- Scheduling
-
-#### Properties
-
-- [Documentation](https://docs.mage.ai/extensibility/api-reference/overview)
-- [OpenAPI](openapi/mage-ai-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/mage-ai.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mage-ai.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [GitHub](https://github.com/mage-ai/mage-ai)
-
-## Common Properties
-
-- [GitHub Organization](https://github.com/mage-ai)
-- [LinkedIn](https://www.linkedin.com/company/magetech)
 - [Website](https://www.mage.ai)
 - [Documentation](https://docs.mage.ai)
-- [Plans](plans/mage-ai-plans-pricing.yml)
-- [Rate Limits](rate-limits/mage-ai-rate-limits.yml)
-- [Fin Ops](finops/mage-ai-finops.yml)
+- [Blog](https://www.mage.ai/blog)
+- [GitHub](https://github.com/mage-ai)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 25.2** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 42.0 |
+| Contract governance | 0.0 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 32.1 |
+| Access clarity | 7.9 |
+
+**Agent readiness 20.4** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 17.6** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/mage-ai/](https://apis.io/providers/mage-ai/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Mage: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/mage-ai/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
